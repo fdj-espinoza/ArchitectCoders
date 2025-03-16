@@ -3,8 +3,8 @@ package ing.espinoza.architectcoders.ui.screens.home
 import android.Manifest
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -24,7 +23,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -35,6 +33,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import ing.espinoza.architectcoders.data.Movie
 import ing.espinoza.architectcoders.R
+import ing.espinoza.architectcoders.ui.common.LoadingProgressIndicator
 import ing.espinoza.architectcoders.ui.common.PermissionRequestEffect
 import ing.espinoza.architectcoders.ui.common.getRegion
 import ing.espinoza.architectcoders.ui.theme.ArchitectCodersTheme
@@ -54,7 +53,7 @@ fun Screen(content: @Composable () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    onClick: (Movie) -> Unit,
+    onMovieClick: (Movie) -> Unit,
     vm: HomeViewModel = viewModel()
 ) {
     val ctx = LocalContext.current
@@ -82,27 +81,32 @@ fun HomeScreen(
             val state = vm.state
 
             if (state.loading) {
-                Box(
+                LoadingProgressIndicator(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding),
-                    contentAlignment = Alignment.Center
-                ){
-                    CircularProgressIndicator()
-                }
+                        .padding(padding)
+                )
             }
 
-            LazyVerticalGrid(
-                columns = GridCells.Adaptive(120.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.padding(horizontal = 4.dp),
-                contentPadding = padding
-            ) {
-                items(state.movies) { movie ->
-                    MovieItem(movie = movie, onClick = { onClick(movie) })
-                }
-            }
+           MoviesGrid(padding, state, onMovieClick)
+        }
+    }
+}
+
+@Composable
+fun MoviesGrid(
+    padding: PaddingValues,
+    state: HomeViewModel.UiState,
+    onMovieClick: (Movie) -> Unit
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(120.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = Modifier.padding(horizontal = 4.dp),
+        contentPadding = padding
+    ) {
+        items(state.movies) { movie ->
+            MovieItem(movie = movie, onClick = { onMovieClick(movie) })
         }
     }
 }

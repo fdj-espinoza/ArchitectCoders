@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ing.espinoza.architectcoders.data.Movie
+import ing.espinoza.architectcoders.data.MoviesClient
 import ing.espinoza.architectcoders.data.MoviesRepository
 import kotlinx.coroutines.launch
 
@@ -14,7 +15,7 @@ class HomeViewModel : ViewModel() {
     var state by mutableStateOf(UiState())
         private set //solo se asignar valores desde el viewModel
 
-    private val repository = MoviesRepository()
+    private val repository = MoviesRepository(MoviesClient.instance)
 
     fun onUiReady(region: String) {
         viewModelScope.launch {

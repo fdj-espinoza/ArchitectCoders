@@ -16,7 +16,7 @@ fun Navigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
-            HomeScreen(onClick = { movie ->
+            HomeScreen(onMovieClick = { movie ->
                 navController.navigate("detail/${movie.id}")
             })
         }
