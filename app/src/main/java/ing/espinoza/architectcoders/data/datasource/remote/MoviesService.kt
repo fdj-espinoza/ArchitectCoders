@@ -1,4 +1,4 @@
-package ing.espinoza.architectcoders.data
+package ing.espinoza.architectcoders.data.datasource.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path

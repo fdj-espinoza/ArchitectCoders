@@ -4,27 +4,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ing.espinoza.architectcoders.data.Movie
 import ing.espinoza.architectcoders.data.MoviesRepository
+import ing.espinoza.architectcoders.Result
+import ing.espinoza.architectcoders.stateAsResultIn
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flatMapLatest
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    repository: MoviesRepository
+) : ViewModel() {
 
-    private val repository = MoviesRepository()
+    private val uiReady = MutableStateFlow(false)
 
-    private val _state = MutableStateFlow(UiState())
-    val state: StateFlow<UiState> = _state.asStateFlow()
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val state: StateFlow<Result<List<Movie>>> = uiReady
+        .filter { it }
+        .flatMapLatest { repository.movies }
+        .stateAsResultIn(viewModelScope)
 
-    fun onUiReady(region: String) {
-        viewModelScope.launch {
-            _state.value = UiState(loading = true)
-            _state.value = UiState(loading = false, movies = repository.fetchPopularMovies(region))
-        }
+    fun onUiReady() {
+        uiReady.value = true
     }
-
-    data class UiState(
-        val loading: Boolean = false,
-        val movies: List<Movie> = emptyList()
-    )
 }

@@ -1,4 +1,4 @@
-package ing.espinoza.architectcoders.data
+package ing.espinoza.architectcoders.data.datasource.remote
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

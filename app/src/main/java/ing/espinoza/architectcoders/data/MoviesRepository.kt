@@ -1,32 +1,35 @@
 package ing.espinoza.architectcoders.data
 
-class MoviesRepository {
+import ing.espinoza.architectcoders.data.datasource.MoviesLocalDataSource
+import ing.espinoza.architectcoders.data.datasource.MoviesRemoteDataSource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.onEach
 
-    //Para que se ejecute en un hilo secundario
-    suspend fun fetchPopularMovies(region: String): List<Movie> =
-        MoviesClient
-            .instance
-            .fetchPopularMovies(region)
-            .results
-            .map { it.toDomainModel() }
+class MoviesRepository(
+    private val regionRepository: RegionRepository,
+    private val localDataSource: MoviesLocalDataSource,
+    private val remoteDataSource: MoviesRemoteDataSource
+) {
 
-    suspend fun findMovieById(id: Int): Movie =
-        MoviesClient
-            .instance
-            .fetchMovieById(id)
-            .toDomainModel()
+    val movies: Flow<List<Movie>> = localDataSource.movies.onEach { localMovies ->
+        if (localMovies.isEmpty()) {
+            val region = regionRepository.findLastRegion()
+            val movies = remoteDataSource.fetchPopularMovies(region)
+            localDataSource.saveMovies(movies)
+        }
+    }
+
+    fun findMovieById(id: Int): Flow<Movie> = localDataSource.findMovieById(id)
+        .onEach { localMovie ->
+            if (localMovie == null) {
+                val remoteMovie =  remoteDataSource.findMovieById(id)
+                localDataSource.saveMovies(listOf(remoteMovie))
+            }
+        }
+        .filterNotNull()
+
+    suspend fun toggleFavorite(movie: Movie) {
+        localDataSource.saveMovies(listOf(movie.copy(favorite = !movie.favorite)))
+    }
 }
-
-private fun RemoteMovie.toDomainModel(): Movie =
-    Movie(
-        id = id,
-        title = title,
-        overview = overview,
-        releaseDate = releaseDate,
-        poster = posterPath?.let {"https://image.tmdb.org/t/p/w185/$it"},
-        backdrop = backdropPath?.let { "https://image.tmdb.org/t/p/w780/$it" },
-        originalTitle = originalTitle,
-        originalLanguage = originalLanguage,
-        popularity = popularity,
-        voteAverage = voteAverage
-    )
