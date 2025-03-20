@@ -1,6 +1,7 @@
-package ing.espinoza.architectcoders.data
+package ing.espinoza.architectcoders.data.datasource.remote
 
 import ing.espinoza.architectcoders.BuildConfig
+import ing.espinoza.architectcoders.data.datasource.remote.MoviesService
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
