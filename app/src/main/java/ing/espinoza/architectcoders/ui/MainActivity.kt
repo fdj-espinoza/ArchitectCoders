@@ -22,8 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ing.espinoza.architectcoders.ui.screens.Navigation
-import ing.espinoza.architectcoders.ui.theme.ArchitectCodersTheme
+import ing.espinoza.architectcoders.ui.common.theme.ArchitectCodersTheme
+import ing.espinoza.architectcoders.ui.navigation.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
