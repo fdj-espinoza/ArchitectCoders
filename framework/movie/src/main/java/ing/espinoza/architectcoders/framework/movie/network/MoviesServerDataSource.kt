@@ -2,8 +2,10 @@ package ing.espinoza.architectcoders.framework.movie.network
 
 import ing.espinoza.architectcoders.domain.movie.data.MoviesRemoteDataSource
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
+import org.koin.core.annotation.Factory
 
-class MoviesServerDataSource(
+@Factory
+internal class MoviesServerDataSource(
     private val moviesService: MoviesService
 ) : MoviesRemoteDataSource {
 

@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class HomeViewModel(
     private val fetchMoviesUseCase: FetchMoviesUseCase
 ) : ViewModel() {

@@ -4,8 +4,10 @@ import ing.espinoza.architectcoders.domain.movie.data.MoviesLocalDataSource
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import org.koin.core.annotation.Factory
 
-class MoviesRoomDataSource(
+@Factory
+internal class MoviesRoomDataSource(
     private val moviesDao: MoviesDao
 ) : MoviesLocalDataSource {
     override val movies: Flow<List<Movie>> =

@@ -10,7 +10,9 @@ import ing.espinoza.architectcoders.ui.common.stateAsResultIn
 import ing.espinoza.architectcoders.ui.common.Result
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class DetailViewlModel(
     id: Int,
     findMovieByIdUseCase: FindMovieByIdUseCase,

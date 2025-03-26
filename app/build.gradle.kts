@@ -1,9 +1,11 @@
 import java.util.Properties
 
 plugins {
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ksp)
     id("architectcoders.android.application")
     id("architectcoders.android.application.compose")
+    id("architectcoders.di.library.compose")
 }
 
 android {
