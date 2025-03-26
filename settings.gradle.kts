@@ -1,4 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -21,3 +24,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "Architect Coders"
 include(":app")
+include(":domain:movie")
+include(":domain:region")
+include(":framework:core")
+include(":framework:region")
+include(":framework:movie")
+include(":feature:common")
+include(":feature:home")
+include(":feature:detail")

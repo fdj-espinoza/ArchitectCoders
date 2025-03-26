@@ -2,7 +2,7 @@ package ing.espinoza.architectcoders
 
 import android.app.Application
 import androidx.room.Room
-import ing.espinoza.architectcoders.data.datasource.database.MoviesDatabase
+import ing.espinoza.architectcoders.framework.core.MoviesDatabase
 
 class App: Application() {
 

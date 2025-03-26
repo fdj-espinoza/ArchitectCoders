@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">My Movies</string>
     <string name="back">Go Back</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite">Mark as Favorite</string>
     <string name="error">Error</string>
 </resources>
