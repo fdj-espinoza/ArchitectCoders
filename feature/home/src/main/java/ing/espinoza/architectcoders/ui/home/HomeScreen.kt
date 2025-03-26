@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import ing.espinoza.architectcoders.ui.common.AcScaffold
@@ -40,7 +41,7 @@ import ing.espinoza.architectcoders.ui.common.R as CommonR
 @Composable
 fun HomeScreen(
     onMovieClick: (Movie) -> Unit,
-    vm: HomeViewModel
+    vm: HomeViewModel = hiltViewModel()
 ) {
     val homeState = rememberHomeState()
     PermissionRequestEffect(permission = Manifest.permission.ACCESS_COARSE_LOCATION) {

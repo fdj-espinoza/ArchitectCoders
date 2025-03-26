@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import ing.espinoza.architectcoders.ui.common.AcScaffold
@@ -44,8 +45,8 @@ import ing.espinoza.architectcoders.ui.common.Screen
 
 @Composable
 fun DetailScreen(
-    vm: DetailViewlModel,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    vm: DetailViewlModel = hiltViewModel()
 ) {
     val state by vm.state.collectAsState()
     DetailScreen(

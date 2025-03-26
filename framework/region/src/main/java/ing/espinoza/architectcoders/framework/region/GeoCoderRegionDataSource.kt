@@ -5,8 +5,9 @@ import ing.espinoza.architectcoders.domain.region.data.DEFAULT_REGION
 import ing.espinoza.architectcoders.domain.region.data.LocationDataSource
 import ing.espinoza.architectcoders.domain.region.data.RegionDataSource
 import ing.espinoza.architectcoders.domain.region.entities.Location
+import javax.inject.Inject
 
-class GeoCoderRegionDataSource(
+internal class GeoCoderRegionDataSource @Inject constructor(
     private val geocoder: Geocoder,
     private val locationDataSource: LocationDataSource
 ) : RegionDataSource {
