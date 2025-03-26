@@ -2,6 +2,7 @@ package ing.espinoza.architectcoders.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import ing.espinoza.architectcoders.domain.movie.usecases.FetchMoviesUseCase
 import ing.espinoza.architectcoders.ui.common.Result
@@ -11,10 +12,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
-import org.koin.android.annotation.KoinViewModel
+import javax.inject.Inject
 
-@KoinViewModel
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val fetchMoviesUseCase: FetchMoviesUseCase
 ) : ViewModel() {
 
