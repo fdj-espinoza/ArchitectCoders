@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenLoadingState_showProgress()">
+      <SelectionState runConfigName="ExampleInstrumentedTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="HomeScreenTest">
+      <SelectionState runConfigName="check_4_items_db()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DetailScreenTest">
+      <SelectionState runConfigName="check_6_items_db()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenFavoriteClicked_listenerIsCalled()">
+      <SelectionState runConfigName="test_it_works()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenBackClicked_listenerIsCalled()">
+      <SelectionState runConfigName="check_mock_server_is_working()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

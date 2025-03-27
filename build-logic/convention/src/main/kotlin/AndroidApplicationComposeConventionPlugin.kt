@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
+import ing.espinoza.architectcoders.addAndroidTestDependencies
 import ing.espinoza.architectcoders.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,6 +12,8 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
 
             val extension = extensions.getByType<ApplicationExtension>()
             configureAndroidCompose(extension)
+
+            addAndroidTestDependencies()
         }
     }
 }
