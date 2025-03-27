@@ -3,8 +3,8 @@ package ing.espinoza.architectcoders.domain.movie.data
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import ing.espinoza.architectcoders.domain.region.data.DEFAULT_REGION
 import ing.espinoza.architectcoders.domain.region.data.RegionRepository
-import ing.espinoza.architectcoders.sampleMovie
-import ing.espinoza.architectcoders.sampleMovies
+import ing.espinoza.architectcoders.domain.movie.sampleMovie
+import ing.espinoza.architectcoders.domain.movie.sampleMovies
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf

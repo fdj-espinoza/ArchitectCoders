@@ -1,6 +1,6 @@
 package ing.espinoza.architectcoders.domain.movie.usecases
 
-import ing.espinoza.architectcoders.sampleMovie
+import ing.espinoza.architectcoders.domain.movie.sampleMovie
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Test

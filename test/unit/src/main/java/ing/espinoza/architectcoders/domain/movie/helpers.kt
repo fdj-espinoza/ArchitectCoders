@@ -1,11 +1,11 @@
-package ing.espinoza.architectcoders
+package ing.espinoza.architectcoders.domain.movie
 
 import ing.espinoza.architectcoders.domain.movie.entities.Movie
 
 fun sampleMovie(id: Int) = Movie(
     id = id,
-    title = "Title",
-    overview = "Overview",
+    title = "Title $id",
+    overview = "Overview $id",
     releaseDate = "01/01/2025",
     poster = null,
     backdrop = null,

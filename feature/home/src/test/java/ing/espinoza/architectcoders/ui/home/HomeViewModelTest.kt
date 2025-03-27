@@ -3,7 +3,7 @@ package ing.espinoza.architectcoders.ui.home
 import app.cash.turbine.test
 import ing.espinoza.architectcoders.domain.movie.usecases.FetchMoviesUseCase
 import ing.espinoza.architectcoders.ui.common.Result
-import ing.espinoza.architectcoders.sampleMovies
+import ing.espinoza.architectcoders.domain.movie.sampleMovies
 import ing.espinoza.architectcoders.testrules.CoroutinesTestRule
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi

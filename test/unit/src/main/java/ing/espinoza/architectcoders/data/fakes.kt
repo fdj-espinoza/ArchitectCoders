@@ -7,7 +7,7 @@ import ing.espinoza.architectcoders.domain.movie.entities.Movie
 import ing.espinoza.architectcoders.domain.region.data.DEFAULT_REGION
 import ing.espinoza.architectcoders.domain.region.data.RegionDataSource
 import ing.espinoza.architectcoders.domain.region.data.RegionRepository
-import ing.espinoza.architectcoders.sampleMovies
+import ing.espinoza.architectcoders.domain.movie.sampleMovies
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map

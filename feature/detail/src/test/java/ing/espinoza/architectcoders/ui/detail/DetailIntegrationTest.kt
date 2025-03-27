@@ -4,8 +4,8 @@ import app.cash.turbine.test
 import ing.espinoza.architectcoders.data.buildMoviesRepositoryWith
 import ing.espinoza.architectcoders.domain.movie.usecases.FindMovieByIdUseCase
 import ing.espinoza.architectcoders.domain.movie.usecases.ToggleFavoriteUseCase
-import ing.espinoza.architectcoders.sampleMovie
-import ing.espinoza.architectcoders.sampleMovies
+import ing.espinoza.architectcoders.domain.movie.sampleMovie
+import ing.espinoza.architectcoders.domain.movie.sampleMovies
 import ing.espinoza.architectcoders.testrules.CoroutinesTestRule
 import ing.espinoza.architectcoders.ui.common.Result
 import junit.framework.TestCase.assertEquals

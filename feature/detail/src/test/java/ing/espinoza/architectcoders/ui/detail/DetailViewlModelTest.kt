@@ -3,7 +3,7 @@ package ing.espinoza.architectcoders.ui.detail
 import app.cash.turbine.test
 import ing.espinoza.architectcoders.domain.movie.usecases.FindMovieByIdUseCase
 import ing.espinoza.architectcoders.domain.movie.usecases.ToggleFavoriteUseCase
-import ing.espinoza.architectcoders.sampleMovie
+import ing.espinoza.architectcoders.domain.movie.sampleMovie
 import ing.espinoza.architectcoders.testrules.CoroutinesTestRule
 import ing.espinoza.architectcoders.ui.common.Result
 import junit.framework.TestCase.assertEquals

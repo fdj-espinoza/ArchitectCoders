@@ -36,20 +36,33 @@ import ing.espinoza.architectcoders.ui.common.AcScaffold
 import ing.espinoza.architectcoders.ui.common.PermissionRequestEffect
 import ing.espinoza.architectcoders.ui.common.Screen
 import ing.espinoza.architectcoders.ui.common.R as CommonR
+import ing.espinoza.architectcoders.ui.common.Result
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     onMovieClick: (Movie) -> Unit,
     vm: HomeViewModel = hiltViewModel()
 ) {
-    val homeState = rememberHomeState()
     PermissionRequestEffect(permission = Manifest.permission.ACCESS_COARSE_LOCATION) {
         vm.onUiReady()
     }
 
+    val state by vm.state.collectAsState()
+
+    HomeScreen(
+        onMovieClick = onMovieClick,
+        state = state
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(
+    onMovieClick: (Movie) -> Unit,
+    state: Result<List<Movie>>
+) {
+    val homeState = rememberHomeState()
     Screen {
-        val state by vm.state.collectAsState()
         AcScaffold(
             state = state,
             topBar = {

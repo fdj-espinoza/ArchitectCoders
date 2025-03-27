@@ -1,7 +1,7 @@
 package ing.espinoza.architectcoders.domain.movie.usecases
 
 import ing.espinoza.architectcoders.domain.movie.data.MoviesRepository
-import ing.espinoza.architectcoders.sampleMovie
+import ing.espinoza.architectcoders.domain.movie.sampleMovie
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.mockito.kotlin.mock
