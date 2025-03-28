@@ -29,9 +29,9 @@ jobs:
       - name: Bump version
         uses: chkfung/android-version-actions@v1.2.2
         with:
-            gradle-path: app/build.gradle.kts # Path to the build.gradle file
-            version-code: ${{ github.run_number }}
-            version-name: $( ./gradlew -q app:printVersionName )
+            gradlePath: app/build.gradle.kts # Path to the build.gradle file
+            versionCode: ${{ github.run_number }}
+            versionName: $( ./gradlew -q app:printVersionName )
 
       - name: Assemble APK
         run: ./gradlew assemble
