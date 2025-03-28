@@ -27,7 +27,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Bump version
-        uses: chkfung/android-version-actions@v1.2.0
+        uses: chkfung/android-version-actions@v1.2.2
         with:
             gradle-path: app/build.gradle.kts # Path to the build.gradle file
             version-code: ${{ github.run_number }}
