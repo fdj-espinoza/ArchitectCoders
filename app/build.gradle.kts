@@ -67,3 +67,7 @@ dependencies {
     kspAndroidTest(libs.androidx.room.compiler)
     androidTestImplementation(libs.okhttp.mockwebserver)
 }
+
+tasks.register("printVersionName") {
+    println(android.defaultConfig.versionName)
+}
