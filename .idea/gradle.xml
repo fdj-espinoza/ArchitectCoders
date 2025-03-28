@@ -36,6 +36,8 @@
             <option value="$PROJECT_DIR$/framework/core" />
             <option value="$PROJECT_DIR$/framework/movie" />
             <option value="$PROJECT_DIR$/framework/region" />
+            <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/test/unit" />
           </set>
         </option>
       </GradleProjectSettings>

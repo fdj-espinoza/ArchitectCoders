@@ -79,7 +79,7 @@ fun DetailScreen(
                     val favorite = detailState.movie?.favorite ?: false
                     Icon(
                         imageVector = if (favorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = stringResource(id = R.string.back)
+                        contentDescription = stringResource(id = R.string.favorite)
                     )
                 }
             },

@@ -6,6 +6,6 @@ import ing.espinoza.architectcoders.framework.movie.database.DbMovie
 import ing.espinoza.architectcoders.framework.movie.database.MoviesDao
 
 @Database(entities = [DbMovie::class], version = 1, exportSchema = false)
-internal abstract class MoviesDatabase: RoomDatabase() {
+abstract class MoviesDatabase: RoomDatabase() {
     abstract fun moviesDao(): MoviesDao
 }
