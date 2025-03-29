@@ -6,6 +6,7 @@ plugins {
     id("architectcoders.android.application")
     id("architectcoders.android.application.compose")
     id("architectcoders.di.library.compose")
+    id("com.google.gms.google-services")
 }
 
 android {

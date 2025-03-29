@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037655305237",
+    "project_id": "architec-coders",
+    "storage_bucket": "architec-coders.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037655305237:android:c72f51afed4ec653bd721c",
+        "android_client_info": {
+          "package_name": "ing.espinoza.architectcoders"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9BQ5r7y-hiiBrqXGPtwRNKLKeMMKW7eI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
