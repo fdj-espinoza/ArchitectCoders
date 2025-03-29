@@ -30,8 +30,11 @@ jobs:
           gradlePath: app/build.gradle.kts # Path to the build.gradle file
           versionCode: ${{ github.run_number }}
 
+      - name: Store API SECRET
+        run: echo ${{ secrets.API_PROPERTIES }} > api.properties
+
       - name: Create api.properties
-        run: base64 --decode ${{ secrets.API_PROPERTIES }} > api.properties
+        run: base64 --decode api.properties.encode > api.properties
 
       - name: Assemble APK
         run: ./gradlew assemble
