@@ -34,7 +34,7 @@ jobs:
         run: echo ${{ secrets.API_PROPERTIES }} > api.properties
 
       - name: Create api.properties
-        run: base64 --decode api.properties.encode > api.properties
+        run: base64 --decode api.properties.encoded > api.properties
 
       - name: Assemble APK
         run: ./gradlew assemble
