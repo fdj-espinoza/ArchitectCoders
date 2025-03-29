@@ -30,14 +30,73 @@ jobs:
           gradlePath: app/build.gradle.kts # Path to the build.gradle file
           versionCode: ${{ github.run_number }}
 
+      - name: Store api.properties Encoded
+        run: echo ${{ secrets.API_PROPERTIES }} > api.properties.encoded
+
       - name: Create api.properties
-        run: base64 --decode ${{ secrets.API_PROPERTIES }} > api.properties
+        run: base64 --decode api.properties.encoded > api.properties
 
-      - name: Assemble APK
-        run: ./gradlew assemble
+      - name: Store google-services.json Encoded
+        run: echo ${{ secrets.GOOGLE_SERVICES_JSON }} > google-services.json.encoded
 
-      - name: Upload APK
+      - name: Create google-services.json
+        run: base64 --decode google-services.json.encoded > app/google-services.json
+
+      - name: Assemble AAB
+        run: ./gradlew bundleRelease
+
+      - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: Release APK
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          name: Release AAB
+          path: app/build/outputs/bundle/release/app-release.aab
+
+  sing:
+    runs-on: ubuntu-latest
+    needs: ["assemble"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download AAB
+        uses: actions/download-artifact@master
+        with:
+          name: Release AAB
+          path: ./
+
+      - name: Sign AAB
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: ./
+          signingKeyBase64: ${{ secrets.SIGNING_FILE }}
+          alias: ${{ secrets.ALIAS }}
+          keystorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.ALIAS_PASSWORD }}
+
+      - name: Upload AAB Signed
+        uses: actions/upload-artifact@v4
+        with:
+          name: Release AAB Signed
+          path: ./app-release.aab
+
+  store:
+    runs-on: ubuntu-latest
+    needs: ["sing"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download AAB
+        uses: actions/download-artifact@master
+        with:
+          name: Release AAB Signed
+          path: ./
+
+#      - name: Upload to Play Store
+#        uses: r0adkll/upload-google-play@v1
+#        with:
+#          serviceAccountCredentials: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+#          packageName: com.example.app
+#          releaseFiles: ./app-release.aab
+#          track: production
+#          status: inProgress
