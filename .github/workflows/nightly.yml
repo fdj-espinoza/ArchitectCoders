@@ -31,7 +31,6 @@ jobs:
         with:
             gradlePath: app/build.gradle.kts # Path to the build.gradle file
             versionCode: ${{ github.run_number }}
-            versionName: $( ./gradlew -q app:printVersionName )
 
       - name: Assemble APK
         run: ./gradlew assemble
