@@ -65,7 +65,7 @@ jobs:
           path: ./
 
       - name: Sign AAB
-        uses: r0adkll/sing-android-release@v1
+        uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: ./
           signingKeyBase64: ${{ secrets.SIGNING_FILE }}
